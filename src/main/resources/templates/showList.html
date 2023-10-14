@@ -26,7 +26,7 @@
         <tbody>
         <tr th:each="show : ${shows}">
             <th><img th:src="${show.image_url}" alt="" height="100px" width="100px"></th>
-            <th><a th:text="${show.show_title}" th:href="@{/{showId}(showId=${show.show_id})}">Name</a></th>
+            <th><a th:text="${show.show_title}" th:href="@{/episodes(showId=${show.show_id})}">Name</a></th>
             <th th:text="${show.genre}">Genre</th>
             <th th:text="${show.show_desc}">Description</th>
             <th th:text="${show.episodes_count}">Total Episodes</th>
