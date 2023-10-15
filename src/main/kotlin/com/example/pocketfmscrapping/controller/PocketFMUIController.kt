@@ -2,14 +2,12 @@ package com.example.pocketfmscrapping.controller
 
 import com.example.pocketfmscrapping.service.PocketFMDataService
 import org.springframework.stereotype.Controller
-import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RequestMethod
 import org.springframework.web.bind.annotation.RequestParam
-import org.springframework.web.bind.annotation.RestController
 import org.springframework.web.servlet.ModelAndView
 
-@RestController
+@Controller
 @RequestMapping("/")
 class PocketFMUIController(val pocketFMDataService: PocketFMDataService) {
 
@@ -20,7 +18,7 @@ class PocketFMUIController(val pocketFMDataService: PocketFMDataService) {
         return mav
     }
 
-    @RequestMapping("/episodes")
+    @RequestMapping("/episodes",method = [RequestMethod.GET])
     fun episodeList(@RequestParam showId: String) : ModelAndView {
         val mav = ModelAndView("episodeList");
         mav.addObject("episodes", pocketFMDataService.fetchAllEpisodeByShow(showId))
