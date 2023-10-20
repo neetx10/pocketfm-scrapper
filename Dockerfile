@@ -9,7 +9,7 @@ COPY --chown=gradle:gradle . /home/gradle/src
 USER root
 RUN chown -R gradle /home/gradle/src
 COPY . .
-RUN gradle build +x test
+RUN gradle build
 
 FROM openjdk
 
