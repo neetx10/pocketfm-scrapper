@@ -7,6 +7,8 @@
         <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
         <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
         <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap4.min.js"></script>
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
         <title>Pocket FM</title>
     </head>
     <body>
@@ -16,6 +18,7 @@
             <th>Name</th>
             <th>Sequence</th>
             <th>Day Since</th>
+            <th>Play</th>
         </tr>
         </thead>
         <tbody>
@@ -23,6 +26,13 @@
             <th><a th:text="${episode.story_title}" th:href="${episode.media_url}">Name</a></th>
             <th th:text="${episode.natural_sequence_number}">Sequence</th>
             <th th:text="${episode.days_since_upload}">Day Since</th>
+            <th>
+                <audio th:id="${episode.story_id}+'_audio'" th:data-player="${episode.story_id}">
+                    <source th:src="${episode.media_url}">
+                </audio>
+                <i th:id="${episode.story_id}+'_play'" th:data-player="${episode.story_id}" class="fa fa-solid fa-play" onclick="playAudio(this.id)"></i>
+                <i th:id="${episode.story_id}+'_pause'" th:data-player="${episode.story_id}" style="display: none" class="fa fa-solid fa-pause" onclick="pauseAudio(this.id)"></i>
+            </th>
         </tr>
         </tbody>
         <tfoot>
@@ -30,13 +40,35 @@
             <th>Name</th>
             <th>Sequence</th>
             <th>Day Since</th>
+            <th>Play</th>
         </tr>
         </tfoot>
     </table>
     </body>
     <footer>
         <script>
-            new DataTable('#example');
+            new DataTable('#example',{
+                order: [[1]]
+            });
+            function playAudio(id) {
+                console.log(id);
+                var showId = id.replace('_play','')
+                console.log(showId);
+                $('#'+id).hide()
+                $('#'+showId+"_pause").show()
+                var x = document.getElementById(showId+'_audio');
+                x.play();
+            }
+
+            function pauseAudio(id) {
+                console.log(id);
+                var showId = id.replace('_pause','')
+                console.log(showId);
+                $('#'+id).hide()
+                $('#'+showId+"_play").show()
+                var x = document.getElementById(showId+'_audio');
+                x.pause();
+            }
         </script>
     </footer>
 </html>
