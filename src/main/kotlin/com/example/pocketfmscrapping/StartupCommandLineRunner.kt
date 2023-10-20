@@ -11,8 +11,8 @@ class StartupCommandLineRunner(
 
     override fun run(vararg args: String?) {
         println("Start")
-        pocketFMFetcherService.fetchAllShows()
-        pocketFMFetcherService.fetchAllEpisodesForAllShows()
+        //pocketFMFetcherService.fetchAllShows()
+        //pocketFMFetcherService.fetchAllEpisodesForAllShows()
         println("End")
     }
 }
