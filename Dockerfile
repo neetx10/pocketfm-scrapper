@@ -17,7 +17,7 @@ FROM openjdk
 
 ENV APP_HOME=/usr/app/
 
-COPY --from=GRADLE_BUILD /build/target/PocketFMScrapping-0.0.1-SNAPSHOT.jar /app/
+COPY --from=GRADLE_BUILD $APP_HOME/build/libs/PocketFMScrapping-0.0.1-SNAPSHOT.jar /app/
 
 EXPOSE 8080
-ENTRYPOINT ["java", "-jar", "$APP_HOME/build/libs/PocketFMScrapping-0.0.1-SNAPSHOT.jar"]
+ENTRYPOINT ["java", "-jar", "/app/PocketFMScrapping-0.0.1-SNAPSHOT.jar"]
