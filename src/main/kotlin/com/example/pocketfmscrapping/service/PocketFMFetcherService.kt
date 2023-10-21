@@ -17,6 +17,7 @@ class PocketFMFetcherService(val pocketFMService: PocketFMService, val showRepos
     private val taskExecutor: SimpleAsyncTaskExecutor = SimpleAsyncTaskExecutor()
 
     @Scheduled(cron = "0 35 14 ? * *")
+    @Scheduled(cron = "0 35 2 ? * *")
     fun fetchAllEpisodesForAllShows() {
         taskExecutor.concurrencyLimit = 5
         showRepository.findAll().forEach {
@@ -40,6 +41,7 @@ class PocketFMFetcherService(val pocketFMService: PocketFMService, val showRepos
     }
 
     @Scheduled(cron = "0 30 14 ? * *")
+    @Scheduled(cron = "0 30 2 ? * *")
     fun fetchAllShows() {
         val listTabs = pocketFMService.fetchFeedTabs()
         listTabs.let {
