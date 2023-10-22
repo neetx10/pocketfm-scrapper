@@ -27,11 +27,11 @@
             <th th:text="${episode.natural_sequence_number}">Sequence</th>
             <th th:text="${episode.days_since_upload}">Day Since</th>
             <th>
-                <audio th:id="${episode.story_id}+'_audio'" th:data-player="${episode.story_id}">
+                <audio th:id="${episode.story_id}+'_audio'" th:data-player="${episode.story_id}" th:title="${episode.story_title}" controls>
                     <source th:src="${episode.media_url}">
                 </audio>
-                <i th:id="${episode.story_id}+'_play'" th:data-player="${episode.story_id}" class="fa fa-solid fa-play" onclick="playAudio(this.id)"></i>
-                <i th:id="${episode.story_id}+'_pause'" th:data-player="${episode.story_id}" style="display: none" class="fa fa-solid fa-pause" onclick="pauseAudio(this.id)"></i>
+                <!--<i th:id="${episode.story_id}+'_play'" th:data-player="${episode.story_id}" class="fa fa-solid fa-play" onclick="playAudio(this.id)"></i>
+                <i th:id="${episode.story_id}+'_pause'" th:data-player="${episode.story_id}" style="display: none" class="fa fa-solid fa-pause" onclick="pauseAudio(this.id)"></i>-->
             </th>
         </tr>
         </tbody>
@@ -58,6 +58,10 @@
                 $('#'+showId+"_pause").show()
                 var x = document.getElementById(showId+'_audio');
                 x.play();
+
+                x.onpause = function () {
+                    pauseAudio(showId+"_pause");
+                }
             }
 
             function pauseAudio(id) {
