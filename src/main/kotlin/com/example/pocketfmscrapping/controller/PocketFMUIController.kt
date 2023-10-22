@@ -21,6 +21,7 @@ class PocketFMUIController(val pocketFMDataService: PocketFMDataService) {
     @RequestMapping("/episodes",method = [RequestMethod.GET])
     fun episodeList(@RequestParam showId: String) : ModelAndView {
         val mav = ModelAndView("episodeList");
+        mav.addObject("show", pocketFMDataService.fetchShow(showId))
         mav.addObject("episodes", pocketFMDataService.fetchAllEpisodeByShow(showId))
         return mav
     }

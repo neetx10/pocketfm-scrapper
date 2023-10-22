@@ -27,6 +27,11 @@ class PocketFMDataService(val showRepository: ShowRepository, val storyRepositor
         return list;
     }
 
+    fun fetchShow(show :String): Show {
+        val typeRef: TypeReference<Show> = object : TypeReference<Show>(){}
+        return ObjectMapper().convertValue(showRepository.findById(show).get(),typeRef)
+    }
+
     fun fetchAllEpisodeByShow(show :String):List<Story> {
         val typeRef: TypeReference<List<Story>> = object : TypeReference<List<Story>>(){}
         return ObjectMapper().convertValue(storyRepository.findAllByShowId(show),typeRef)
