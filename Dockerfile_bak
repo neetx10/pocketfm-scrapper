@@ -1,8 +1,8 @@
 FROM debian:latest AS GRADLE_BUILD
 
-RUN apt-get update && apt-get install openjdk-17-jdk curl tar -y
+RUN apt-get update && apt-get install openjdk-17-jdk curl unzip -y
 
-RUN curl -sSL https://downloads.gradle.org/distributions/gradle-8.4-bin.zip | tar -xzf - -C /opt
+RUN curl -sSL https://downloads.gradle.org/distributions/gradle-8.4-bin.zip | unzip -d /opt
 
 ENV GRADLE_HOME /opt/gradle-8.4
 
