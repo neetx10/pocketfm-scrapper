@@ -1,6 +1,6 @@
-FROM alpine:latest AS GRADLE_BUILD
+FROM debian:latest AS GRADLE_BUILD
 
-RUN apk add --no-cache openjdk17
+RUN apt-get install openjdk17-jdk -y
 
 RUN curl -sSL https://downloads.gradle.org/distributions/gradle-8.4-bin.zip | tar -xzf - -C /opt
 
@@ -19,9 +19,9 @@ RUN chown -R gradle /home/gradle/src
 COPY . .
 RUN gradle build -x test
 
-FROM alpine:latest
+FROM debian:latest
 
-RUN apk add --no-cache openjdk17
+RUN apt-get install openjdk17-jdk -y
 
 ENV APP_HOME=/usr/app/
 
