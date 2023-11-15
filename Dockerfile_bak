@@ -7,7 +7,7 @@ COPY . .
 
 run chmod +x gradlew
 
-RUN gradle build -x test
+RUN ./gradle build -x test
 
 FROM debian:latest
 
