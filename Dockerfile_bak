@@ -1,4 +1,12 @@
-FROM gradle:jdk21-alpine AS GRADLE_BUILD
+FROM alpine:latest AS GRADLE_BUILD
+
+RUN apk add --no-cache openjdk17
+
+RUN curl -sSL https://downloads.gradle.org/distributions/gradle-8.4-bin.zip | tar -xzf - -C /opt
+
+ENV GRADLE_HOME /opt/gradle-8.4
+
+ENV PATH "$PATH:/opt/gradle-8.4/bin"
 
 ENV APP_HOME=/usr/app/
 WORKDIR $APP_HOME
@@ -11,7 +19,9 @@ RUN chown -R gradle /home/gradle/src
 COPY . .
 RUN gradle build -x test
 
-FROM openjdk
+FROM alpine:latest
+
+RUN apk add --no-cache openjdk17
 
 ENV APP_HOME=/usr/app/
 
