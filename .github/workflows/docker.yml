@@ -10,8 +10,9 @@
 name: Publish Docker image
 
 on:
-  release:
-    types: [published]
+  push:
+    branches:
+      - main
 
 jobs:
   push_to_registries:
@@ -51,5 +52,4 @@ jobs:
           context: .
           file: ./Doockerfile_bak
           push: true
-          tags: ${{ steps.meta.outputs.tags }}
-          labels: ${{ steps.meta.outputs.labels }}
+          tags: latest
