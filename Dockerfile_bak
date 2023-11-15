@@ -2,19 +2,14 @@ FROM debian:latest AS GRADLE_BUILD
 
 RUN apt-get update && apt-get install openjdk-17-jdk unzip wget -y
 
-RUN wget https://downloads.gradle.org/distributions/gradle-8.3-bin.zip
-
-RUN unzip gradle-8.3-bin.zip -d /opt
-
-ENV GRADLE_HOME /opt/gradle-8.3
-
-ENV PATH "$PATH:/opt/gradle-8.3/bin"
-
 ENV APP_HOME=/usr/app/
 WORKDIR $APP_HOME
 
 COPY . .
-RUN gradle build -x test
+
+run chmod +x gradlew
+
+RUN ./gradlew build -x test
 
 FROM debian:latest
 
