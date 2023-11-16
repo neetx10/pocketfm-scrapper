@@ -1,6 +1,4 @@
-FROM debian:latest
-
-RUN apt-get update && apt-get install openjdk-17-jre-headless -y
+FROM eclipse-temurin:17
 
 # The application's jar file
 ARG JAR_FILE=build/libs/PocketFMScrapping-0.0.1-SNAPSHOT.jar
