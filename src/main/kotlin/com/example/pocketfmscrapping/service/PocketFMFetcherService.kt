@@ -22,7 +22,7 @@ class PocketFMFetcherService(val pocketFMService: PocketFMService, val showRepos
     @Scheduled(cron = "0 35 2 ? * *")
     @Scheduled(cron = "0 0 0 ? * *")
     fun fetchAllEpisodesForAllShows() {
-        taskExecutor.concurrencyLimit = 5
+        taskExecutor.concurrencyLimit = 10
         showRepository.findAll().forEach {
             it.id?.let {it1 ->
                 taskExecutor.execute { fetchAllEpisodes(it1, 0) }
@@ -34,6 +34,21 @@ class PocketFMFetcherService(val pocketFMService: PocketFMService, val showRepos
         val stories = pocketFMService.fetchEpisodes(show,currPtr)
         if(stories?.isEmpty() == false && stories.first().stories?.isEmpty() == false) {
             val typeRef : TypeReference<List<StoryEntity>> = object : TypeReference<List<StoryEntity>>() {}
+            stories.first().stories!!.forEach { story ->
+                run {
+                    if (story.media_url.isNullOrBlank()) {
+                        story.story_id?.let {
+                            storyRepository.findById(it).ifPresent { storyEntity ->
+                                run {
+                                    if (!storyEntity.mediaUrl.isNullOrBlank()) {
+                                        story.media_url = storyEntity.mediaUrl
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
             storyRepository.saveAll(ObjectMapper().convertValue(stories.first().stories,typeRef))
             println("${stories.first().show_title} :: total episodes = ${stories.first().episodes_count} :: current top episode = ${stories.first().stories?.first()?.story_title}")
         }

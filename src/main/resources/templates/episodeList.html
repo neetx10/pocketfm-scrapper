@@ -28,7 +28,7 @@
             <th th:text="${episode.natural_sequence_number}">Sequence</th>
             <th th:text="${episode.days_since_upload}">Day Since</th>
             <th>
-                <audio th:id="${episode.story_id}+'_audio'" th:data-player="${episode.story_id}" th:title="${episode.story_title}" controls>
+                <audio preload="none" th:id="${episode.story_id}+'_audio'" th:data-player="${episode.story_id}" th:title="${episode.story_title}" controls>
                     <source th:src="${episode.media_url}">
                 </audio>
                 <!--<i th:id="${episode.story_id}+'_play'" th:data-player="${episode.story_id}" class="fa fa-solid fa-play" onclick="playAudio(this.id)"></i>

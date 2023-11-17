@@ -18,12 +18,14 @@ class PocketFMService {
 
     fun getHeaders() : Headers {
         return Headers.Builder()
+//                .add("access-token", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiJmMzgzNzdlNWY4ZWVlNWFjYmRjM2Y5YjY2NDA2MjIxYmE3YTk2ZGM5IiwiYWNjZXNzX3Rva2VuIjoiZTFhZDA4MDdjOGI5YTI2MGJmYmY5ZTAzZWMxNmY1ZjI5YWJkZjA5MSIsImRldmljZS1pZCI6ImZkNDRkY2M5NTUwYjZkNjEiLCJhdXRoX3Rva2VuIjoid2ViLWF1dGgiLCJsYXN0X2FjdGl2ZV9wbGF0Zm9ybSI6ImFuZHJvaWQiLCJsYXN0X2FjdGl2ZV9kZXZpY2VfYXBwX3ZlcnNpb25fY29kZSI6Ijc1MyIsImV4cCI6MTcwMDMxNDkzNH0.W6nNlcYYmnRR0GpAz6qHPAQGrdmt3BbXc1iil2hEK3Q")
+//                .add("device-id", "fd44dcc9550b6d61")
                 .add("authority", "web.pocketfm.com")
                 .add("accept", "application/json, text/plain, */*")
                 .add("accept-language", "en-IN,en-US;q=0.9,en;q=0.8,hi-IN;q=0.7,hi;q=0.6,en-GB;q=0.5")
                 .add("app-client", "consumer-web")
                 .add("app-version", "180")
-                .add("auth-token", "web-auth")
+//                .add("auth-token", "web-auth")
                 .add("cache-control", "no-cache")
                 .add("dnt", "1")
                 .add("origin", "https://pocketfm.com")
