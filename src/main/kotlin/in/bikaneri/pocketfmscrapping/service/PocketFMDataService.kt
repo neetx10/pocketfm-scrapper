@@ -1,9 +1,9 @@
-package com.example.pocketfmscrapping.service
+package `in`.bikaneri.pocketfmscrapping.service
 
-import com.example.pocketfmscrapping.dto.Show
-import com.example.pocketfmscrapping.dto.Story
-import com.example.pocketfmscrapping.repository.ShowRepository
-import com.example.pocketfmscrapping.repository.StoryRepository
+import `in`.bikaneri.pocketfmscrapping.dto.Show
+import `in`.bikaneri.pocketfmscrapping.dto.Story
+import `in`.bikaneri.pocketfmscrapping.repository.ShowRepository
+import `in`.bikaneri.pocketfmscrapping.repository.StoryRepository
 import com.fasterxml.jackson.core.type.TypeReference
 import com.fasterxml.jackson.databind.ObjectMapper
 import org.springframework.stereotype.Service

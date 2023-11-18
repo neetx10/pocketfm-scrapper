@@ -1,6 +1,8 @@
-package com.example.pocketfmscrapping
+package `in`.bikaneri.pocketfmscrapping
 
-import com.example.pocketfmscrapping.service.PocketFMFetcherService
+import `in`.bikaneri.pocketfmscrapping.service.PocketFMFetcherService
+import org.slf4j.Logger
+import org.slf4j.LoggerFactory
 import org.springframework.boot.CommandLineRunner
 import org.springframework.core.task.SimpleAsyncTaskExecutor
 import org.springframework.stereotype.Component
@@ -9,13 +11,14 @@ import org.springframework.stereotype.Component
 class StartupCommandLineRunner(
         val pocketFMFetcherService: PocketFMFetcherService,
 ) : CommandLineRunner {
+    private val log : Logger = LoggerFactory.getLogger(javaClass)
 
     override fun run(vararg args: String?) {
-        println("Start")
+        log.info("Start")
         SimpleAsyncTaskExecutor().execute {
             pocketFMFetcherService.fetchAllShows()
             pocketFMFetcherService.fetchAllEpisodesForAllShows()
-            println("End")
+            log.info("End")
         }
     }
 }

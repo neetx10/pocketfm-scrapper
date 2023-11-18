@@ -1,4 +1,4 @@
-package com.example.pocketfmscrapping.entity
+package `in`.bikaneri.pocketfmscrapping.entity
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 import com.fasterxml.jackson.annotation.JsonInclude

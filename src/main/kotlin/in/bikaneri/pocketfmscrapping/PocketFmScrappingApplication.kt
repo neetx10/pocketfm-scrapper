@@ -1,4 +1,4 @@
-package com.example.pocketfmscrapping
+package `in`.bikaneri.pocketfmscrapping
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication

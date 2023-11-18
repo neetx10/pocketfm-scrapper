@@ -1,6 +1,6 @@
-package com.example.pocketfmscrapping.controller
+package `in`.bikaneri.pocketfmscrapping.controller
 
-import com.example.pocketfmscrapping.service.PocketFMDataService
+import `in`.bikaneri.pocketfmscrapping.service.PocketFMDataService
 import org.springframework.stereotype.Controller
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RequestMethod

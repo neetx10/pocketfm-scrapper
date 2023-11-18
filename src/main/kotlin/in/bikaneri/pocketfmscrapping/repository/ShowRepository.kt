@@ -1,6 +1,6 @@
-package com.example.pocketfmscrapping.repository
+package `in`.bikaneri.pocketfmscrapping.repository
 
-import com.example.pocketfmscrapping.entity.ShowEntity
+import `in`.bikaneri.pocketfmscrapping.entity.ShowEntity
 import org.springframework.data.mongodb.repository.MongoRepository
 import org.springframework.stereotype.Repository
 

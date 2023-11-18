@@ -1,12 +1,14 @@
-package com.example.pocketfmscrapping.service
+package `in`.bikaneri.pocketfmscrapping.service
 
-import com.example.pocketfmscrapping.dto.Show
-import com.example.pocketfmscrapping.entity.ShowEntity
-import com.example.pocketfmscrapping.entity.StoryEntity
-import com.example.pocketfmscrapping.repository.ShowRepository
-import com.example.pocketfmscrapping.repository.StoryRepository
+import `in`.bikaneri.pocketfmscrapping.dto.Show
+import `in`.bikaneri.pocketfmscrapping.entity.ShowEntity
+import `in`.bikaneri.pocketfmscrapping.entity.StoryEntity
+import `in`.bikaneri.pocketfmscrapping.repository.ShowRepository
+import `in`.bikaneri.pocketfmscrapping.repository.StoryRepository
 import com.fasterxml.jackson.core.type.TypeReference
 import com.fasterxml.jackson.databind.ObjectMapper
+import org.slf4j.Logger
+import org.slf4j.LoggerFactory
 import org.springframework.core.task.SimpleAsyncTaskExecutor
 import org.springframework.scheduling.annotation.Scheduled
 import org.springframework.stereotype.Service
@@ -15,6 +17,7 @@ import org.springframework.stereotype.Service
 class PocketFMFetcherService(val pocketFMService: PocketFMService, val showRepository: ShowRepository, val storyRepository: StoryRepository) {
 
     private val taskExecutor: SimpleAsyncTaskExecutor = SimpleAsyncTaskExecutor()
+    private val log : Logger = LoggerFactory.getLogger(javaClass)
 
     @Scheduled(cron = "0 35 14 ? * *")
     @Scheduled(cron = "0 35 18 ? * *")
@@ -50,7 +53,7 @@ class PocketFMFetcherService(val pocketFMService: PocketFMService, val showRepos
                 }
             }
             storyRepository.saveAll(ObjectMapper().convertValue(stories.first().stories,typeRef))
-            println("${stories.first().show_title} :: total episodes = ${stories.first().episodes_count} :: current top episode = ${stories.first().stories?.first()?.story_title}")
+            log.info("${stories.first().show_title} :: total episodes = ${stories.first().episodes_count} :: current top episode = ${stories.first().stories?.first()?.story_title}")
         }
         while (stories?.first()?.stories?.count() == 10) {
             fetchAllEpisodes(show,currPtr + 10)
@@ -72,7 +75,7 @@ class PocketFMFetcherService(val pocketFMService: PocketFMService, val showRepos
                             if(it.type.equals("show")) {
                                 val show: Show = ObjectMapper().convertValue(it.value, Show::class.java)
                                 saveStory(show)
-                                println("Saving : ${show.show_title}")
+                                log.info("Saving : ${show.show_title}")
                             }
                         }
                     }

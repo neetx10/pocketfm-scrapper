@@ -1,9 +1,9 @@
-package com.example.pocketfmscrapping.service
+package `in`.bikaneri.pocketfmscrapping.service
 
-import com.example.pocketfmscrapping.dto.FeedResult
-import com.example.pocketfmscrapping.dto.FeedTab
-import com.example.pocketfmscrapping.dto.ResponseWrapper
-import com.example.pocketfmscrapping.dto.Show
+import `in`.bikaneri.pocketfmscrapping.dto.FeedResult
+import `in`.bikaneri.pocketfmscrapping.dto.FeedTab
+import `in`.bikaneri.pocketfmscrapping.dto.ResponseWrapper
+import `in`.bikaneri.pocketfmscrapping.dto.Show
 import com.fasterxml.jackson.core.type.TypeReference
 import com.fasterxml.jackson.databind.ObjectMapper
 import okhttp3.Headers

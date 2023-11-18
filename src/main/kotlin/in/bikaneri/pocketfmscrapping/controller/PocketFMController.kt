@@ -1,8 +1,8 @@
-package com.example.pocketfmscrapping.controller
+package `in`.bikaneri.pocketfmscrapping.controller
 
-import com.example.pocketfmscrapping.dto.Show
-import com.example.pocketfmscrapping.dto.Story
-import com.example.pocketfmscrapping.service.PocketFMDataService
+import `in`.bikaneri.pocketfmscrapping.dto.Show
+import `in`.bikaneri.pocketfmscrapping.dto.Story
+import `in`.bikaneri.pocketfmscrapping.service.PocketFMDataService
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RequestMethod
 import org.springframework.web.bind.annotation.RequestParam
