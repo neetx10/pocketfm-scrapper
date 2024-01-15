@@ -25,7 +25,7 @@ class PocketFMService {
                 .add("accept-language", "en-IN,en-US;q=0.9,en;q=0.8,hi-IN;q=0.7,hi;q=0.6,en-GB;q=0.5")
                 .add("app-client", "consumer-web")
                 .add("app-version", "180")
-//                .add("auth-token", "web-auth")
+                .add("auth-token", "web-auth")
                 .add("cache-control", "no-cache")
                 .add("dnt", "1")
                 .add("origin", "https://pocketfm.com")
