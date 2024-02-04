@@ -1,5 +1,6 @@
 package `in`.bikaneri.pocketfmscrapping
 
+import `in`.bikaneri.pocketfmscrapping.service.PocketFMDownloaderService
 import `in`.bikaneri.pocketfmscrapping.service.PocketFMFetcherService
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
@@ -10,14 +11,16 @@ import org.springframework.stereotype.Component
 @Component
 class StartupCommandLineRunner(
         val pocketFMFetcherService: PocketFMFetcherService,
+        val pocketFMDownloaderService: PocketFMDownloaderService
 ) : CommandLineRunner {
     private val log : Logger = LoggerFactory.getLogger(javaClass)
 
     override fun run(vararg args: String?) {
         log.info("Start")
         SimpleAsyncTaskExecutor().execute {
-            pocketFMFetcherService.fetchAllShows()
-            pocketFMFetcherService.fetchAllEpisodesForAllShows()
+//            pocketFMFetcherService.fetchAllShows()
+//            pocketFMFetcherService.fetchAllEpisodesForAllShows()
+            //pocketFMDownloaderService.downloadAllShowsAvailableEpisodes()
             log.info("End")
         }
     }
