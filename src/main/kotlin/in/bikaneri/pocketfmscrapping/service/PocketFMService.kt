@@ -18,8 +18,8 @@ class PocketFMService {
 
     fun getHeaders() : Headers {
         return Headers.Builder()
-                .add("access-token", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiJmMzgzNzdlNWY4ZWVlNWFjYmRjM2Y5YjY2NDA2MjIxYmE3YTk2ZGM5IiwiYWNjZXNzX3Rva2VuIjoiZTFhZDA4MDdjOGI5YTI2MGJmYmY5ZTAzZWMxNmY1ZjI5YWJkZjA5MSIsImRldmljZS1pZCI6ImZkNDRkY2M5NTUwYjZkNjEiLCJhdXRoX3Rva2VuIjoid2ViLWF1dGgiLCJsYXN0X2FjdGl2ZV9wbGF0Zm9ybSI6ImFuZHJvaWQiLCJsYXN0X2FjdGl2ZV9kZXZpY2VfYXBwX3ZlcnNpb25fY29kZSI6Ijc1MyIsImV4cCI6MTcwMTAwODM5Mn0.5f_T3gjLWx01UbR5Jiy3kp5lLLGFfofqRbu9sAUCU1M")
-                .add("device-id", "fd44dcc9550b6d61")
+                //.add("access-token", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiJmMzgzNzdlNWY4ZWVlNWFjYmRjM2Y5YjY2NDA2MjIxYmE3YTk2ZGM5IiwiYWNjZXNzX3Rva2VuIjoiZTFhZDA4MDdjOGI5YTI2MGJmYmY5ZTAzZWMxNmY1ZjI5YWJkZjA5MSIsImRldmljZS1pZCI6ImZkNDRkY2M5NTUwYjZkNjEiLCJhdXRoX3Rva2VuIjoid2ViLWF1dGgiLCJsYXN0X2FjdGl2ZV9wbGF0Zm9ybSI6ImFuZHJvaWQiLCJsYXN0X2FjdGl2ZV9kZXZpY2VfYXBwX3ZlcnNpb25fY29kZSI6Ijc1MyIsImV4cCI6MTcwMTAwODM5Mn0.5f_T3gjLWx01UbR5Jiy3kp5lLLGFfofqRbu9sAUCU1M")
+                //.add("device-id", "fd44dcc9550b6d61")
                 .add("authority", "web.pocketfm.com")
                 .add("accept", "application/json, text/plain, */*")
                 .add("accept-language", "en-IN,en-US;q=0.9,en;q=0.8,hi-IN;q=0.7,hi;q=0.6,en-GB;q=0.5")
